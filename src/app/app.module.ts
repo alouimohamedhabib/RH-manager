@@ -11,8 +11,13 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {CommonModule} from "@angular/common";
 import {NotFoundComponent} from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModel} from './material.model';
-import {FormsModule} from '@angular/forms';
+
+import {FormsModule, NgForm} from '@angular/forms';
+import {AuthGuard} from "./auth.guard";
+import {AuthService} from "./auth.service";
+import {HttpClientModule} from "@angular/common/http";
+import {LoginComponent} from './login/login.component';
+import {UsersService} from "./users.service";
 
 
 @NgModule({
@@ -22,6 +27,8 @@ import {FormsModule} from '@angular/forms';
     FooterComponent,
     NavbarComponent,
     NotFoundComponent,
+    LoginComponent,
+
 
   ],
   imports: [
@@ -30,10 +37,10 @@ import {FormsModule} from '@angular/forms';
     HttpModule,
     CommonModule,
     BrowserAnimationsModule,
-    MaterialModel ,
-    FormsModule
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [HttpModule],
+  providers: [HttpModule, NgForm, AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

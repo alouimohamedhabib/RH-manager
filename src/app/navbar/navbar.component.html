@@ -12,6 +12,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse navbar-right">
       <ul class="nav navbar-nav">
+        <li routerLinkActive="active" *ngIf="!active"><a routerLink="/login" >Login</a></li>
+        <li routerLinkActive="active" *ngIf="active"><a (click)="auth.logout()" >Log out</a></li>
         <li routerLinkActive="active" ><a routerLink="/ressources" >Ressources</a></li>
       </ul>
     </div>

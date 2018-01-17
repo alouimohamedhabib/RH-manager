@@ -1,23 +1,64 @@
-<div *ngIf="toEditUser">
+<!--<div *ngIf="toEditUser">-->
+  <!--<div class="panel panel-default">-->
+    <!--<div class="panel-heading">-->
+      <!--Edit ressource : {{toEditUser.name}}-->
+    <!--</div>-->
+    <!--<div class="panel-body">-->
+      <!--<input class="form-control" type="text" value="{{toEditUser.name}}" [(ngModel)]="NewUserData">-->
+      <!--<br>-->
+      <!--<button (click)="save()" class="btn btn-primary">Save</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<br>
+
+
+<!--panel to edit-->
+<div *ngIf="toEditUser" class="">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Edit ressource : {{toEditUser.name}}
+      Edit user: {{toEditUser.name}}
     </div>
+    {{toEditUser | json}}
     <div class="panel-body">
-      <input class="form-control" type="text" value="{{toEditUser.name}}" [(ngModel)]="NewUserData">
-<br>
-      <button (click)="save()" class="btn btn-primary">Save</button>
+      <form #f="ngForm" (ngSubmit)="onsubmit(f)" novalidate>
+        <input type="text" name="name" value="{{toEditUser.name}}" required ngModel #name="ngModel"  [class.label.label-danger]="!name.valid">
+        <input type="text" name="username">
+        <input type="text" name="address">
+        <input type="text" name="zipcode">
+        <p>
+
+        </p>
+        <button type="submit" class="btn btn-primary" >
+          Save
+        </button>
+      </form>
     </div>
   </div>
 </div>
-<br>
-<ul class="list-group">
-  <li *ngFor="let user of  users  "
-      [class]="'list-group-item'"
-      (click)="editUser(user)"
-  >
-    <a routerLink="/ressources/{{user.id}}">
-      {{user.name}}
-    </a>
-  </li>
-</ul>
+<!--end panel to edit-->
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+
+  <div class="panel-heading">List of ressouces</div>
+  <!-- Table -->
+  <table class="table">
+    <thead>
+    <th>Name</th>
+    <th>Action</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>
+        <a (click)="edit(user)"><span>Edit</span></a>
+        <a routerLink="/ressources/view/{{user.id}}">| <span>View</span></a>
+        <a>| <span (click)="delete(user)">Delete</span></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

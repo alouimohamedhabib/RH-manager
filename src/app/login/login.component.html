@@ -1,0 +1,24 @@
+<div class="col-md-6 col-md-push-3">
+  <h2>
+    Login form
+  </h2>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="form-group">
+
+<div class="alert alert-danger" [hidden]="!error">
+  Wrong credentionals
+</div>
+
+    <input class="form-control" name="Login" ngModel required #LoginModel="ngModel"
+           pattern="admin">
+
+    <p></p>
+    <input class="form-control"  required type="password" name="last" ngModel>
+    <p></p>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!f.valid"
+    >Submit
+    </button>
+  </form>
+</div>
