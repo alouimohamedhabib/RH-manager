@@ -16,11 +16,13 @@ export class RessourcesComponent implements OnInit {
   private toEditUser: any;
   private NewUserData: any;
   private NewUserDataId: any;
+  private showTheForm: boolean;
 
   constructor(private ressources: UsersService) {
   }
 
   ngOnInit() {
+    this.toEditUser = "null"
     this.ressources.getUsers().subscribe(
       response => {
 
@@ -56,10 +58,13 @@ export class RessourcesComponent implements OnInit {
   }
 
   edit(user) {
+    this.showTheForm = true;
     this.toEditUser = user;
   }
 
   onsubmit(f) {
-    console.log(f)
+    this.ressources.updateUser(f.form.value).subscribe((response) => {
+      console.log(response)
+    })
   }
 }

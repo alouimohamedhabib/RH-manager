@@ -1,35 +1,50 @@
-<!--<div *ngIf="toEditUser">-->
-  <!--<div class="panel panel-default">-->
-    <!--<div class="panel-heading">-->
-      <!--Edit ressource : {{toEditUser.name}}-->
-    <!--</div>-->
-    <!--<div class="panel-body">-->
-      <!--<input class="form-control" type="text" value="{{toEditUser.name}}" [(ngModel)]="NewUserData">-->
-      <!--<br>-->
-      <!--<button (click)="save()" class="btn btn-primary">Save</button>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<br>
-
-
 <!--panel to edit-->
-<div *ngIf="toEditUser" class="">
+<div *ngIf="showTheForm" [hidden]="!showTheForm" class="">
   <div class="panel panel-default">
     <div class="panel-heading">
       Edit user: {{toEditUser.name}}
     </div>
-    {{toEditUser | json}}
     <div class="panel-body">
       <form #f="ngForm" (ngSubmit)="onsubmit(f)" novalidate>
-        <input type="text" name="name" value="{{toEditUser.name}}" required ngModel #name="ngModel"  [class.label.label-danger]="!name.valid">
-        <input type="text" name="username">
-        <input type="text" name="address">
-        <input type="text" name="zipcode">
-        <p>
 
+        <input type="text"
+               value="{{toEditUser.name}}"
+               name="name"
+               ngModel
+               required
+               #username="ngModel" pattern="aloui">
+        <p *ngIf="!username.valid">
         </p>
-        <button type="submit" class="btn btn-primary" >
+        <br>
+        <input type="text"
+               value="{{toEditUser.id}}"
+               name="id"
+               ngModel
+               required
+               #username="ngModel" >
+        <br>
+        <input type="text"
+               value="{{toEditUser.username}}"
+               name="username"
+               ngModel
+               required
+               #username="ngModel">
+        <br>
+        <input type="text"
+               value="{{toEditUser.website}}"
+               name="website"
+               ngModel
+               required
+               #address="ngModel">
+        <br>
+        <input type="text"
+               name="phone"
+               value="{{toEditUser.phone}}"
+               ngModel
+               required
+               #zipcode="ngModel">
+
+        <button type="submit" class="btn btn-primary">
           Save
         </button>
       </form>

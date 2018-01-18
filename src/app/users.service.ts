@@ -12,9 +12,9 @@ export class UsersService {
     return this.http.get(this.url + "/profile");
   }
 
-  updateUser(userName) {
-    let url = this.url + '/profile/' + userName[0]
-    return this.http.patch(url, {"name": userName[1]});
+  updateUser(object) {
+    let url = this.url + '/profile/' + object.id
+    return this.http.patch(url, object);
   }
 
   logUser(name, password) {
