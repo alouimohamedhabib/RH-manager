@@ -5,42 +5,57 @@
       Edit user: {{toEditUser.name}}
     </div>
     <div class="panel-body">
-      <form #f="ngForm" (ngSubmit)="onsubmit(f)" novalidate>
+      <form #f="ngForm" (ngSubmit)="onsubmit()" novalidate>
+
+
+        <!--<input id="name" name="name" class="form-control"-->
+               <!--pattern="mmmm"-->
+               <!--[(ngModel)]="toEditUser.name" #name="ngModel">-->
+
+        <!--<div *ngIf="name.invalid"-->
+             <!--class="alert alert-danger">{{name.errors | json}}-->
+        <!--</div>-->
+
 
         <input type="text"
-               value="{{toEditUser.name}}"
-               name="name"
-               ngModel
-               required
-               #username="ngModel" pattern="aloui">
-        <p *ngIf="!username.valid">
-        </p>
+        value="{{toEditUser.name}}" name="name"
+        [(ngModel)]="toEditUser.name"
+        #xxx="ngModel" pattern="aloui">
+
+        <p *ngIf="xxx.invalid">valid</p>
+
         <br>
         <input type="text"
                value="{{toEditUser.id}}"
                name="id"
-               ngModel
-               required
-               #username="ngModel" >
-        <br>
-        <input type="text"
-               value="{{toEditUser.username}}"
-               name="username"
-               ngModel
+               [(ngModel)]="toEditUser.id"
                required
                #username="ngModel">
         <br>
         <input type="text"
+               value="{{toEditUser.username}}"
+               name="username"
+               [(ngModel)]="toEditUser.username"
+               pattern="mmmm"
+               required
+               #username>
+        <p *ngIf="!username.pattern">
+          Wrong pattern
+        </p>
+        <br>
+        <input type="text"
                value="{{toEditUser.website}}"
                name="website"
-               ngModel
+               [(ngModel)]="toEditUser.website"
+
                required
                #address="ngModel">
         <br>
         <input type="text"
                name="phone"
                value="{{toEditUser.phone}}"
-               ngModel
+               [(ngModel)]="toEditUser.phone"
+
                required
                #zipcode="ngModel">
 

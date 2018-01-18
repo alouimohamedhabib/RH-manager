@@ -12,12 +12,13 @@ import {CommonModule} from "@angular/common";
 import {NotFoundComponent} from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {FormsModule, NgForm} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule, NgForm} from '@angular/forms';
 import {AuthGuard} from "./auth.guard";
 import {AuthService} from "./auth.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from './login/login.component';
 import {UsersService} from "./users.service";
+import {HeroDetailComponent} from './hero-detail/hero-detail.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {UsersService} from "./users.service";
     NavbarComponent,
     NotFoundComponent,
     LoginComponent,
+    HeroDetailComponent,
 
 
   ],
@@ -39,6 +41,7 @@ import {UsersService} from "./users.service";
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HttpModule, NgForm, AuthGuard, AuthService, UsersService],
   bootstrap: [AppComponent]

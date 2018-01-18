@@ -1,0 +1,17 @@
+<form action="" [formGroup]="form">
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text"
+           id="username"
+           formControlName="username"
+           class="form-control">
+    <hr>
+    <div *ngIf="form.get('username').errors">
+      {{form.get('username').errors | json}}
+    </div>
+    <div>
+
+    </div>
+  </div>
+</form>

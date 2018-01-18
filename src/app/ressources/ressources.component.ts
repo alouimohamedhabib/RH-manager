@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {NgForOf} from '@angular/common';
 import {CommonModule} from '@angular/common';
 import {UsersService} from '../users.service';
+import {FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -12,14 +13,14 @@ import {UsersService} from '../users.service';
 })
 export class RessourcesComponent implements OnInit {
 
-  private users: any;
-  private toEditUser: any;
-  private NewUserData: any;
-  private NewUserDataId: any;
-  private showTheForm: boolean;
+  public users: any;
+  public toEditUser: any;
+  public NewUserData: any;
+  public NewUserDataId: any;
+  public showTheForm: boolean;
+  public form: FormGroup;
 
-  constructor(private ressources: UsersService) {
-  }
+  constructor(private ressources: UsersService) {}
 
   ngOnInit() {
     this.toEditUser = "null"
@@ -62,9 +63,10 @@ export class RessourcesComponent implements OnInit {
     this.toEditUser = user;
   }
 
-  onsubmit(f) {
-    this.ressources.updateUser(f.form.value).subscribe((response) => {
-      console.log(response)
+  onsubmit() {
+    console.log(this.toEditUser);
+    this.ressources.updateUser(this.toEditUser).subscribe((response) => {
+      console.log(response);
     })
   }
 }
